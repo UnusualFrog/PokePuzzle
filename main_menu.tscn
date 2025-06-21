@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwl4pylg2u7l1"]
+
+[ext_resource type="Texture2D" uid="uid://blbrjhty3lgyg" path="res://art/logo3.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://b7ppol71mqx6c" path="res://main_menu.gd" id="1_jix8l"]
+[ext_resource type="Texture2D" uid="uid://djjf451tq4dre" path="res://art/play logo.png" id="2_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://dkuocatyis6mi" path="res://art/background.png" id="3_fu7sn"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_jix8l")
+
+[node name="MainMenuContainer" type="CanvasLayer" parent="."]
+
+[node name="Logo" type="Sprite2D" parent="MainMenuContainer"]
+position = Vector2(581, 99)
+scale = Vector2(0.553419, 0.553419)
+texture = ExtResource("1_06t4h")
+
+[node name="PlayButton" type="Button" parent="MainMenuContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -15.0
+offset_right = 79.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("2_7vrkn")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="MainMenuContainer"]
+layer = 0
+
+[node name="Background" type="TextureRect" parent="MainMenuContainer/BackgroundLayer"]
+offset_right = 1150.0
+offset_bottom = 648.0
+texture = ExtResource("3_fu7sn")
+
+[connection signal="pressed" from="MainMenuContainer/PlayButton" to="." method="_on_play_button_pressed"]

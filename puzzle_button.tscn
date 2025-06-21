@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://byp78lulaa77i"]
+
+[ext_resource type="Script" uid="uid://ckyym688urxl3" path="res://puzzle_button.gd" id="1_31yxf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_31yxf"]
+load_path = "res://.godot/imported/fire.png-4b1bba03b0083d88345d5bf278afc689.ctex"
+
+[node name="Button" type="Button"]
+z_index = -1
+offset_left = 436.0
+offset_top = 198.0
+offset_right = 663.0
+offset_bottom = 425.0
+icon = SubResource("CompressedTexture2D_31yxf")
+expand_icon = true
+script = ExtResource("1_31yxf")
+metadata/_edit_use_anchors_ = true
