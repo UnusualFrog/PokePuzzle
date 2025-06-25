@@ -17,7 +17,6 @@ var game_state = {
 	"y_off": -25,
 	"button_size": 100,
 	"side_length": range(1,6)
-	
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -105,47 +104,22 @@ func generate_board():
 	
 	# reset board state
 	reset_board()
-	
-	# set game board dimensions
 	game_state["game_is_active"] = true
-	#var x_off = 200
-	#var y_off = -25
-	#var button_size = 100
-	#var side_length = range(1,6) 
 	
-	# Place buttons on grid in size of side_length
+	# Place buttons on grid of size side_length
 	for row in game_state["side_length"]:
 		var new_row = []
 		for col in game_state["side_length"]:
 			# Create node instancce from scene and add to game board
 			var new_puzzle_button = puzzle_button_scene.instantiate()
 			new_puzzle_button = generate_button(new_puzzle_button, game_board, row, col)
-			#new_puzzle_button.id_x = row
-			#new_puzzle_button.id_y = col
-			#game_board.add_child(new_puzzle_button)
-			#
-			## Set position and size of buttons
-			#new_puzzle_button.position = Vector2((row * button_size) + x_off, (col * button_size) + y_off)
-			#new_puzzle_button.set_size(Vector2(button_size, button_size))
-			#
-			## Connect all buttons to receiver function
-			#new_puzzle_button.pressed.connect(_on_button_pressed.bind(new_puzzle_button))
-			#
-			## Set the icon of each button
-			#match new_puzzle_button.type_1:
-				#"Fire":
-					#new_puzzle_button.icon = icon_fire
-				#"Water":
-					#new_puzzle_button.icon = icon_water
-				#"Grass":
-					#new_puzzle_button.icon = icon_grass
 			
-			# Add button to row
+			# Add new button to row
 			new_row.push_back(new_puzzle_button)
-			# Add full row to grid
+		# Add filled new row to grid
 		game_state["puzzle_button_grid"].push_back(new_row)
 
-
+# Reset state of game board
 func reset_board():
 	var timer_text = get_node("UICanvasLayer/TimerText")
 	var score_value = get_node("UICanvasLayer/ScoreValue")
@@ -162,7 +136,7 @@ func reset_board():
 	for button in game_board.get_children():
 		button.queue_free()
 
-
+# Generate a puzzle button with a random type
 func generate_button(new_puzzle_button, game_board, row, col):
 		new_puzzle_button.id_x = row
 		new_puzzle_button.id_y = col
