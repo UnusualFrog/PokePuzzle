@@ -9,4 +9,5 @@
 
 [node name="MainMenu" parent="." instance=ExtResource("2_0xm2m")]
 
+[connection signal="main_menu_return" from="GameBoard" to="MainMenu" method="_on_game_board_main_menu_return"]
 [connection signal="start_game_pressed" from="MainMenu" to="GameBoard" method="_on_main_menu_start_game_pressed"]

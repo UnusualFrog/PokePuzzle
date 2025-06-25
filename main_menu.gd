@@ -18,3 +18,8 @@ func _on_play_button_pressed() -> void:
 	start_game_pressed.emit()
 	var main_menu = get_node("MainMenuContainer")
 	main_menu.hide()
+
+
+func _on_game_board_main_menu_return() -> void:
+	var main_menu = get_node("MainMenuContainer")
+	main_menu.show()
