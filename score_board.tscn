@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw5xahrcdfqbb"]
+
+[ext_resource type="Texture2D" uid="uid://llkvyn4rqwvm" path="res://art/final_score_logo.png" id="1_8prrw"]
+[ext_resource type="LabelSettings" uid="uid://taf3clpg742w" path="res://ui_style_small.tres" id="2_dfpnx"]
+[ext_resource type="Texture2D" uid="uid://jeb7o5vvw237" path="res://border.png" id="3_dfpnx"]
+[ext_resource type="Texture2D" uid="uid://d27mrq01vno45" path="res://background_score_board.png" id="4_lrnbq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5riuh"]
+
+[node name="ScoreBoard" type="CanvasLayer"]
+
+[node name="ScoreHeader" type="Sprite2D" parent="."]
+position = Vector2(584.774, 244)
+texture = ExtResource("1_8prrw")
+
+[node name="AttackBonusLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.181
+anchor_top = 0.23
+anchor_right = 0.181
+anchor_bottom = 0.23
+offset_left = 192.262
+offset_top = 134.96
+offset_right = 434.262
+offset_bottom = 183.96
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "Attack Bonus: "
+label_settings = ExtResource("2_dfpnx")
+horizontal_alignment = 1
+
+[node name="AttackBonusValue" type="Label" parent="."]
+offset_left = 672.774
+offset_top = 284.0
+offset_right = 732.774
+offset_bottom = 333.0
+size_flags_horizontal = 0
+text = "000"
+label_settings = ExtResource("2_dfpnx")
+
+[node name="TimeBonusLabel" type="Label" parent="."]
+offset_left = 424.774
+offset_top = 356.0
+offset_right = 633.774
+offset_bottom = 405.0
+size_flags_horizontal = 0
+text = "Time Bonus:"
+label_settings = ExtResource("2_dfpnx")
+
+[node name="TimeBonusValue" type="Label" parent="."]
+offset_left = 672.774
+offset_top = 356.0
+offset_right = 732.774
+offset_bottom = 405.0
+size_flags_horizontal = 0
+text = "000"
+label_settings = ExtResource("2_dfpnx")
+
+[node name="FinalScoreLabel" type="Label" parent="."]
+z_index = 1
+offset_left = 440.774
+offset_top = 412.0
+offset_right = 642.774
+offset_bottom = 461.0
+size_flags_horizontal = 0
+text = "Final Score: "
+label_settings = ExtResource("2_dfpnx")
+
+[node name="FinalScoreValue" type="Label" parent="."]
+z_index = 1
+offset_left = 672.774
+offset_top = 412.0
+offset_right = 732.774
+offset_bottom = 461.0
+size_flags_horizontal = 0
+text = "000"
+label_settings = ExtResource("2_dfpnx")
+
+[node name="Border" type="Sprite2D" parent="."]
+position = Vector2(576.387, 435.812)
+scale = Vector2(2.56781, 3.0625)
+texture = ExtResource("3_dfpnx")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("CanvasItemMaterial_5riuh")
+position = Vector2(576, 344)
+scale = Vector2(1.55961, 1.57724)
+texture = ExtResource("4_lrnbq")

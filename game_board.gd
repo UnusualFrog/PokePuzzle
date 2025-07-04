@@ -68,6 +68,7 @@ func _on_main_menu_start_game_pressed() -> void:
 func _on_main_menu_return_button_pressed() -> void:
 	var win_text = get_node("UICanvasLayer/WinText")
 	var main_menu_button = get_node("UICanvasLayer/MainMenuButton")
+	var score_board = get_node("ScoreBoard")
 	var timer_text = get_node("UICanvasLayer/TimerText")
 	var score_text = get_node("UICanvasLayer/ScoreText")
 	var score_value = get_node("UICanvasLayer/ScoreValue")
@@ -75,6 +76,7 @@ func _on_main_menu_return_button_pressed() -> void:
 	reset_board()
 	win_text.hide()
 	main_menu_button.hide()
+	score_board.hide()
 	timer_text.hide()
 	score_text.hide()
 	score_value.hide()
@@ -100,7 +102,7 @@ func check_game_state():
 # Generate tiles of game board
 func generate_board():
 	var puzzle_button_scene = preload("res://puzzle_button.tscn")
-	var game_board = get_node("ButtonCanvasLayer")
+	var game_board = get_node("ButtonContainerCanvasLayer")
 	
 	# reset board state
 	reset_board()
@@ -123,7 +125,7 @@ func generate_board():
 func reset_board():
 	var timer_text = get_node("UICanvasLayer/TimerText")
 	var score_value = get_node("UICanvasLayer/ScoreValue")
-	var game_board = get_node("ButtonCanvasLayer")
+	var game_board = get_node("ButtonContainerCanvasLayer")
 	
 	game_state["puzzle_button_grid"] = []
 	game_state["game_is_active"] = false
@@ -187,8 +189,10 @@ func display_win():
 	game_state["game_is_active"] = false
 	var win_text = get_node("UICanvasLayer/WinText")
 	var main_menu_button = get_node("UICanvasLayer/MainMenuButton")
+	var score_board = get_node("ScoreBoard")
 	win_text.show()
 	main_menu_button.show()
+	score_board.show()
 
 func increment_timer(delta):
 	var timer_text = get_node("UICanvasLayer/TimerText")
