@@ -193,8 +193,16 @@ func display_win():
 	win_text.show()
 	main_menu_button.show()
 	score_board.show()
+	
+	var attack_bonus = get_node("ScoreBoard/AttackBonusValue")
+	var time_bonus = get_node("ScoreBoard/TimeBonusValue")
+	var final_score = get_node("ScoreBoard/FinalScoreValue")
+	
+	attack_bonus.text = str(game_state["game_score"])
+	time_bonus.text =  str(60 - snapped(game_state["time_elapsed"], 1))
+	final_score.text = str(game_state["game_score"] + ( 60 - snapped(game_state["time_elapsed"], 1) ))
 
 func increment_timer(delta):
 	var timer_text = get_node("UICanvasLayer/TimerText")
 	game_state["time_elapsed"] += delta
-	timer_text.text = str(snapped(game_state["time_elapsed"], 0.1))
+	timer_text.text = str(snapped(game_state["time_elapsed"], 1))
