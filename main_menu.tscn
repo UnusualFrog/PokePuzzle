@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwl4pylg2u7l1"]
 
-[ext_resource type="Texture2D" uid="uid://blbrjhty3lgyg" path="res://art/logo3.png" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://blbrjhty3lgyg" path="res://art/UI/logo3.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://b7ppol71mqx6c" path="res://main_menu.gd" id="1_jix8l"]
-[ext_resource type="Texture2D" uid="uid://djjf451tq4dre" path="res://art/play logo.png" id="2_7vrkn"]
-[ext_resource type="Texture2D" uid="uid://dkuocatyis6mi" path="res://art/background.png" id="3_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://djjf451tq4dre" path="res://art/UI/play logo.png" id="2_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://dkuocatyis6mi" path="res://art/UI/background.png" id="3_fu7sn"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_jix8l")

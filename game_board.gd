@@ -2,9 +2,24 @@ extends CanvasLayer
 
 signal main_menu_return
 
+var icon_normal = preload("res://art/type_icons/normal.png")
 var icon_fire = preload("res://art/type icons/fire.png")
 var icon_water = preload("res://art/type icons/water.png")
 var icon_grass = preload("res://art/type icons/grass.png")
+var icon_electric = preload("res://art/type_icons/electric.png")
+var icon_ice = preload("res://art/type_icons/ice.png")
+var icon_fighting = preload("res://art/type_icons/fighting.png")
+var icon_poison = preload("res://art/type_icons/poison.png")
+var icon_ground = preload("res://art/type_icons/ground.png")
+var icon_flying = preload("res://art/type_icons/flying.png")
+var icon_psychic = preload("res://art/type_icons/psychic.png")
+var icon_bug = preload("res://art/type_icons/bug.png")
+var icon_rock = preload("res://art/type_icons/rock.png")
+var icon_ghost = preload("res://art/type_icons/ghost.png")
+var icon_dragon = preload("res://art/type_icons/dragon.png")
+var icon_dark = preload("res://art/type_icons/dark.png")
+var icon_steel = preload("res://art/type_icons/steel.png")
+var icon_fairy = preload("res://art/type_icons/fairy.png")
 
 var game_state = {
 	"attacker": null,

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdykowtcghl1b"
-path="res://.godot/imported/grass.png-c3f5e2f90c426522346289ccce8512b8.ctex"
+uid="uid://cyb01c8tgapro"
+path="res://.godot/imported/fighting.png-68501e12c4dab729a7133fff590056c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/type icons/grass.png"
-dest_files=["res://.godot/imported/grass.png-c3f5e2f90c426522346289ccce8512b8.ctex"]
+source_file="res://art/type_icons/fighting.png"
+dest_files=["res://.godot/imported/fighting.png-68501e12c4dab729a7133fff590056c8.ctex"]
 
 [params]
 

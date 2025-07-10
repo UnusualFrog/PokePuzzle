@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bw5xahrcdfqbb"]
 
-[ext_resource type="Texture2D" uid="uid://llkvyn4rqwvm" path="res://art/final_score_logo.png" id="1_8prrw"]
+[ext_resource type="Texture2D" uid="uid://llkvyn4rqwvm" path="res://art/UI/final_score_logo.png" id="1_lrnbq"]
 [ext_resource type="LabelSettings" uid="uid://taf3clpg742w" path="res://ui_style_small.tres" id="2_dfpnx"]
-[ext_resource type="Texture2D" uid="uid://jeb7o5vvw237" path="res://border.png" id="3_dfpnx"]
-[ext_resource type="Texture2D" uid="uid://d27mrq01vno45" path="res://background_score_board.png" id="4_lrnbq"]
+[ext_resource type="Texture2D" uid="uid://jeb7o5vvw237" path="res://art/UI/border.png" id="3_5riuh"]
+[ext_resource type="Texture2D" uid="uid://d27mrq01vno45" path="res://art/UI/background_score_board.png" id="4_6cum7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5riuh"]
 
@@ -11,7 +11,7 @@
 
 [node name="ScoreHeader" type="Sprite2D" parent="."]
 position = Vector2(584.774, 244)
-texture = ExtResource("1_8prrw")
+texture = ExtResource("1_lrnbq")
 
 [node name="AttackBonusLabel" type="Label" parent="."]
 anchors_preset = -1
@@ -80,11 +80,11 @@ label_settings = ExtResource("2_dfpnx")
 [node name="Border" type="Sprite2D" parent="."]
 position = Vector2(576.387, 435.812)
 scale = Vector2(2.56781, 3.0625)
-texture = ExtResource("3_dfpnx")
+texture = ExtResource("3_5riuh")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
 material = SubResource("CanvasItemMaterial_5riuh")
 position = Vector2(576, 344)
 scale = Vector2(1.55961, 1.57724)
-texture = ExtResource("4_lrnbq")
+texture = ExtResource("4_6cum7")

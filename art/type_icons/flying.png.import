@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkuocatyis6mi"
-path="res://.godot/imported/background.png-694afb2807fe739c9f0954541e14cf0b.ctex"
+uid="uid://df1c6i5pwl0ki"
+path="res://.godot/imported/flying.png-e63a47972062a9f6cf785b07f9809205.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/background.png"
-dest_files=["res://.godot/imported/background.png-694afb2807fe739c9f0954541e14cf0b.ctex"]
+source_file="res://art/type_icons/flying.png"
+dest_files=["res://.godot/imported/flying.png-e63a47972062a9f6cf785b07f9809205.ctex"]
 
 [params]
 

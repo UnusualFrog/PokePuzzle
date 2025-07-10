@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cn0bh54b26t62" path="res://game_board.gd" id="1_i37i2"]
 [ext_resource type="LabelSettings" uid="uid://bwshwddtgehyr" path="res://ui_style.tres" id="2_i37i2"]
-[ext_resource type="Texture2D" uid="uid://bmv26vp28uhul" path="res://art/main_menu_logo.png" id="3_xh13x"]
-[ext_resource type="Texture2D" uid="uid://cmorgw2x58nq6" path="res://art/you_win_logo.png" id="4_30eli"]
+[ext_resource type="Texture2D" uid="uid://bmv26vp28uhul" path="res://art/UI/main_menu_logo.png" id="3_xh13x"]
+[ext_resource type="Texture2D" uid="uid://cmorgw2x58nq6" path="res://art/UI/you_win_logo.png" id="4_30eli"]
 [ext_resource type="PackedScene" uid="uid://bw5xahrcdfqbb" path="res://score_board.tscn" id="5_30eli"]
 
 [node name="GameBoard" type="CanvasLayer"]

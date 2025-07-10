@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmorgw2x58nq6"
-path="res://.godot/imported/you_win_logo.png-1766c339e5af99db5e407cd22b54b9f7.ctex"
+uid="uid://qawqiogq7wxq"
+path="res://.godot/imported/dragon.png-a022d17214e8749269575501c33ac607.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/you_win_logo.png"
-dest_files=["res://.godot/imported/you_win_logo.png-1766c339e5af99db5e407cd22b54b9f7.ctex"]
+source_file="res://art/type_icons/dragon.png"
+dest_files=["res://.godot/imported/dragon.png-a022d17214e8749269575501c33ac607.ctex"]
 
 [params]
 

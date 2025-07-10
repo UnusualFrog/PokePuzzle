@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jeb7o5vvw237"
-path="res://.godot/imported/border.png-a4a7a5340f73f9267d6dc48e4760554a.ctex"
+uid="uid://b5ewi63t8o4u0"
+path="res://.godot/imported/steel.png-b1c1ea5587609e07afb18b4b6462cc8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://border.png"
-dest_files=["res://.godot/imported/border.png-a4a7a5340f73f9267d6dc48e4760554a.ctex"]
+source_file="res://art/type_icons/steel.png"
+dest_files=["res://.godot/imported/steel.png-b1c1ea5587609e07afb18b4b6462cc8a.ctex"]
 
 [params]
 
