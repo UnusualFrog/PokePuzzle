@@ -52,6 +52,7 @@ func _on_button_pressed(emitter):
 	# Both button targets must be selected
 	if game_state["attacker"] != null && game_state["defender"] != null:
 		# Attacker and Defender must not be the same button
+		print(game_state["attacker"].type_1, " -> ", game_state["defender"].type_1)
 		if !(game_state["attacker"].id_x == game_state["defender"].id_x && game_state["attacker"].id_y == game_state["defender"].id_y):
 			# If attacker successfully hits defender, remove both and check for end of game
 			var attack_result = Puzzle_Button.determine_outcome(game_state["attacker"].type_1, game_state["defender"].type_1)
@@ -62,8 +63,11 @@ func _on_button_pressed(emitter):
 				if (check_game_state()):
 					display_win()
 			elif (attack_result == 2):
-				# TODO ADD CRIT LOGIC
-				pass
+				crit_hit_success()
+				
+				# If game over, show win UI, stop timer and hide game UI
+				if (check_game_state()):
+					display_win()
 			
 			# Reset attacker and defender when both are picked
 			game_state["attacker"] = null
@@ -172,12 +176,42 @@ func generate_button(new_puzzle_button, game_board, row, col):
 		
 		# Set the icon of each button
 		match new_puzzle_button.type_1:
+			"Normal":
+				new_puzzle_button.icon = icon_normal
 			"Fire":
 				new_puzzle_button.icon = icon_fire
 			"Water":
 				new_puzzle_button.icon = icon_water
 			"Grass":
 				new_puzzle_button.icon = icon_grass
+			"Electric":
+				new_puzzle_button.icon = icon_electric
+			"Ice":
+				new_puzzle_button.icon = icon_ice
+			"Fighting":
+				new_puzzle_button.icon = icon_fighting
+			"Poison":
+				new_puzzle_button.icon = icon_poison
+			"Ground":
+				new_puzzle_button.icon = icon_ground
+			"Flying":
+				new_puzzle_button.icon = icon_flying
+			"Psychic":
+				new_puzzle_button.icon = icon_psychic
+			"Bug":
+				new_puzzle_button.icon = icon_bug
+			"Rock":
+				new_puzzle_button.icon = icon_rock
+			"Ghost":
+				new_puzzle_button.icon = icon_ghost
+			"Dragon":
+				new_puzzle_button.icon = icon_dragon
+			"Dark":
+				new_puzzle_button.icon = icon_dark
+			"Steel":
+				new_puzzle_button.icon = icon_steel
+			"Fairy":
+				new_puzzle_button.icon = icon_fairy
 		
 		return new_puzzle_button
 
@@ -201,6 +235,22 @@ func hit_success():
 	# Increment score
 	var score_value = get_node("UICanvasLayer/ScoreValue")
 	game_state["game_score"] += 10
+	score_value.text = str(game_state["game_score"])
+
+# Resolve successful crit hit
+func crit_hit_success():
+	#TODO add recursive search for adjacent tiles
+	# Remove selected buttons
+	game_state["attacker"].queue_free()
+	game_state["defender"].queue_free()
+	
+	# Remove buttons from grid
+	game_state["puzzle_button_grid"][game_state["attacker"].id_x-1][game_state["attacker"].id_y-1] = null
+	game_state["puzzle_button_grid"][game_state["defender"].id_x-1][game_state["defender"].id_y-1] = null
+	
+	# Increment score
+	var score_value = get_node("UICanvasLayer/ScoreValue")
+	game_state["game_score"] += 30
 	score_value.text = str(game_state["game_score"])
 
 # Display win state UI

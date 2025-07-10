@@ -60,12 +60,42 @@ static func determine_outcome(attacker_type, defender_type):
 	var result = -1
 	
 	match attacker_type:
+		"Normal":
+			result = normal_attacker(defender_type)
 		"Fire":
 			result = fire_attacker(defender_type)
 		"Water":
 			result = water_attacker(defender_type)
 		"Grass":
 			result = grass_attacker(defender_type)
+		"Electric":
+			result = electric_attacker(defender_type)
+		"Ice":
+			result = ice_attacker(defender_type)
+		"Fighting":
+			result = fighting_attacker(defender_type)
+		"Poison":
+			result = poison_attacker(defender_type)
+		"Ground":
+			result = ground_attacker(defender_type)
+		"Flying": 
+			result = flying_attacker(defender_type)
+		"Psychic":
+			result = psychic_attacker(defender_type)
+		"Bug":
+			result = bug_attacker(defender_type)
+		"Rock":
+			result = rock_attacker(defender_type)
+		"Ghost":
+			result = ghost_attacker(defender_type)
+		"Dragon":
+			result = dragon_attacker(defender_type)
+		"Dark":
+			result = dark_attacker(defender_type)
+		"Steel":
+			result = steel_attacker(defender_type)
+		"Fairy":
+			result = fairy_attacker(defender_type)
 	
 	return result
 	
@@ -103,6 +133,7 @@ static func water_attacker(defender):
 		"Fire", "Ground", "Rock":
 			return 2
 		# Neutral
+		_:
 			return 1
 
 # Helper function of determine_outcome for grass attacker case
@@ -114,6 +145,7 @@ static func grass_attacker(defender):
 		# Super
 		"Water", "Ground", "Rock":
 			return 2
+		_:
 		# Neutral
 			return 1
 
@@ -127,6 +159,7 @@ static func electric_attacker(defender):
 		"Water", "Flying":
 			return 2
 		# Neutral
+		_:
 			return 1
 
 # Helper function of determine_outcome for ice attacker case
@@ -139,6 +172,7 @@ static func ice_attacker(defender):
 		"Grass", "Ground", "Flying", "Dragon":
 			return 2
 		# Neutral
+		_:
 			return 1
 
 # Helper function of determine_outcome for fighting attacker case
@@ -151,6 +185,7 @@ static func fighting_attacker(defender):
 		"Normal", "Ice", "Rock", "Dark", "Steel":
 			return 2
 		# Neutral
+		_:
 			return 1
 
 # Helper function of determine_outcome for poison attacker case
@@ -163,6 +198,7 @@ static func poison_attacker(defender):
 		"Grass", "Fairy":
 			return 2
 		# Neutral
+		_:
 			return 1
 
 # Helper function of determine_outcome for ground attacker case
@@ -175,6 +211,7 @@ static func ground_attacker(defender):
 		"Fire", "Electric", "Poison", "Rock", "Steel":
 			return 2
 		# Neutral
+		_:
 			return 1
 			
 
@@ -188,6 +225,7 @@ static func flying_attacker(defender):
 		"Grass", "Fighting", "Bug":
 			return 2
 		# Neutral
+		_:
 			return 1
 			
 
@@ -201,6 +239,7 @@ static func psychic_attacker(defender):
 		"Fighting", "Poison", "Bug":
 			return 2
 		# Neutral
+		_:
 			return 1
 
 # Helper function of determine_outcome for bug attacker case
@@ -213,6 +252,7 @@ static func bug_attacker(defender):
 		"Grass", "Psychic", "Dark":
 			return 2
 		# Neutral
+		_:
 			return 1
 
 # Helper function of determine_outcome for rock attacker case
@@ -225,6 +265,7 @@ static func rock_attacker(defender):
 		"Fire", "Ice", "Flying", "Bug":
 			return 2
 		# Neutral
+		_:
 			return 1
 
 # Helper function of determine_outcome for rock attacker case
@@ -237,6 +278,7 @@ static func ghost_attacker(defender):
 		"Psychic", "Ghost":
 			return 2
 		# Neutral
+		_:
 			return 1
 
 # Helper function of determine_outcome for dragon attacker case
@@ -249,6 +291,7 @@ static func dragon_attacker(defender):
 		"Dragon":
 			return 2
 		# Neutral
+		_:
 			return 1
 
 # Helper function of determine_outcome for dark attacker case
@@ -261,6 +304,7 @@ static func dark_attacker(defender):
 		"Psychic", "Ghost":
 			return 2
 		# Neutral
+		_:
 			return 1
 
 # Helper function of determine_outcome for steel attacker case
@@ -273,6 +317,7 @@ static func steel_attacker(defender):
 		"Ice", "Rock", "Fairy":
 			return 2
 		# Neutral
+		_:
 			return 1
 
 # Helper function of determine_outcome for fairy attacker case
@@ -285,4 +330,5 @@ static func fairy_attacker(defender):
 		"Fighting", "Ghost", "Dragon":
 			return 2
 		# Neutral
+		_:
 			return 1
