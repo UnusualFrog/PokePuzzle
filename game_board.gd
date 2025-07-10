@@ -3,9 +3,9 @@ extends CanvasLayer
 signal main_menu_return
 
 var icon_normal = preload("res://art/type_icons/normal.png")
-var icon_fire = preload("res://art/type icons/fire.png")
-var icon_water = preload("res://art/type icons/water.png")
-var icon_grass = preload("res://art/type icons/grass.png")
+var icon_fire = preload("res://art/type_icons/fire.png")
+var icon_water = preload("res://art/type_icons/water.png")
+var icon_grass = preload("res://art/type_icons/grass.png")
 var icon_electric = preload("res://art/type_icons/electric.png")
 var icon_ice = preload("res://art/type_icons/ice.png")
 var icon_fighting = preload("res://art/type_icons/fighting.png")
@@ -54,12 +54,16 @@ func _on_button_pressed(emitter):
 		# Attacker and Defender must not be the same button
 		if !(game_state["attacker"].id_x == game_state["defender"].id_x && game_state["attacker"].id_y == game_state["defender"].id_y):
 			# If attacker successfully hits defender, remove both and check for end of game
-			if (Puzzle_Button.determine_outcome(game_state["attacker"].type_1, game_state["defender"].type_1)):
+			var attack_result = Puzzle_Button.determine_outcome(game_state["attacker"].type_1, game_state["defender"].type_1)
+			if (attack_result == 1):
 				hit_success()
 				
 				# If game over, show win UI, stop timer and hide game UI
 				if (check_game_state()):
 					display_win()
+			elif (attack_result == 2):
+				# TODO ADD CRIT LOGIC
+				pass
 			
 			# Reset attacker and defender when both are picked
 			game_state["attacker"] = null
