@@ -52,7 +52,7 @@ func _on_button_pressed(emitter):
 	# Both button targets must be selected
 	if game_state["attacker"] != null && game_state["defender"] != null:
 		# Attacker and Defender must not be the same button
-		print(game_state["attacker"].type_1, " -> ", game_state["defender"].type_1)
+		#print(game_state["attacker"].type_1, " -> ", game_state["defender"].type_1)
 		if !(game_state["attacker"].id_x == game_state["defender"].id_x && game_state["attacker"].id_y == game_state["defender"].id_y):
 			# If attacker successfully hits defender, remove both and check for end of game
 			var attack_result = Puzzle_Button.determine_outcome(game_state["attacker"].type_1, game_state["defender"].type_1)
@@ -113,8 +113,9 @@ func check_game_state():
 	for row in game_state["puzzle_button_grid"]:
 		for button in row:
 			if (button != null):
-				#print(button.id_x, ", ", button.id_y, ", ", button.type_1)
-				remaining_types.set(button.type_1, "")
+				if (button.type_1 != "Null"):
+					#print(button.id_x, ", ", button.id_y, ", ", button.type_1)
+					remaining_types.set(button.type_1, "")
 	#print(remaining_types)
 	
 	# If only 1 type remains, game is won
@@ -225,12 +226,12 @@ func set_attacker_defender(emitter):
 # Resolve successful hit
 func hit_success():
 	# Remove selected buttons
-	game_state["attacker"].queue_free()
-	game_state["defender"].queue_free()
+	game_state["attacker"].hide()
+	game_state["defender"].hide()
 	
 	# Remove buttons from grid
-	game_state["puzzle_button_grid"][game_state["attacker"].id_x-1][game_state["attacker"].id_y-1] = null
-	game_state["puzzle_button_grid"][game_state["defender"].id_x-1][game_state["defender"].id_y-1] = null
+	game_state["puzzle_button_grid"][game_state["attacker"].id_x-1][game_state["attacker"].id_y-1].type_1 = "Null"
+	game_state["puzzle_button_grid"][game_state["defender"].id_x-1][game_state["defender"].id_y-1].type_1 = "Null"
 	
 	# Increment score
 	var score_value = get_node("UICanvasLayer/ScoreValue")
@@ -240,18 +241,52 @@ func hit_success():
 # Resolve successful crit hit
 func crit_hit_success():
 	#TODO add recursive search for adjacent tiles
+	var org_x = game_state["defender"].id_x
+	var org_y = game_state["defender"].id_y
+	
+	print(org_x, ", ", org_y)
+	recursive_crit_search(org_x, org_y)
+	
+	
 	# Remove selected buttons
-	game_state["attacker"].queue_free()
-	game_state["defender"].queue_free()
+	game_state["attacker"].hide()
+	game_state["defender"].hide()
 	
 	# Remove buttons from grid
-	game_state["puzzle_button_grid"][game_state["attacker"].id_x-1][game_state["attacker"].id_y-1] = null
-	game_state["puzzle_button_grid"][game_state["defender"].id_x-1][game_state["defender"].id_y-1] = null
+	game_state["puzzle_button_grid"][game_state["attacker"].id_x-1][game_state["attacker"].id_y-1].type_1 = "Null"
+	game_state["puzzle_button_grid"][game_state["defender"].id_x-1][game_state["defender"].id_y-1].type_1 = "Null"
 	
 	# Increment score
 	var score_value = get_node("UICanvasLayer/ScoreValue")
 	game_state["game_score"] += 30
 	score_value.text = str(game_state["game_score"])
+
+func recursive_crit_search(curr_x, curr_y):
+	var current_tile = game_state["puzzle_button_grid"][curr_x-1][curr_y-1]
+	print("curr: ", current_tile.type_1)
+	
+	while (Puzzle_Button.determine_outcome(game_state["attacker"].type_1, current_tile.type_1) == 2):
+		current_tile.hide()
+		game_state["puzzle_button_grid"][curr_x-1][curr_y-1].type_1 = "Null"
+		
+		if (curr_y-1 > 0):
+			print("up: ", game_state["puzzle_button_grid"][curr_x-1][curr_y-2].type_1)
+			recursive_crit_search(curr_x, curr_y-1)
+		
+		if (curr_y-1 < game_state["side_length"].size()-1):
+			print("down: ", game_state["puzzle_button_grid"][curr_x-1][curr_y].type_1)
+			recursive_crit_search(curr_x, curr_y+1)
+		
+		if (curr_x-1 > 0):
+			print("left: ", game_state["puzzle_button_grid"][curr_x-2][curr_y-1].type_1)
+			recursive_crit_search(curr_x-1, curr_y)
+		
+		if (curr_x-1 < game_state["side_length"].size()-1):
+			print("right: ", game_state["puzzle_button_grid"][curr_x][curr_y-1].type_1)
+			recursive_crit_search(curr_x+1, curr_y)
+		
+		break
+	
 
 # Display win state UI
 func display_win():
