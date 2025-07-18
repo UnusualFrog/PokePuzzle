@@ -105,7 +105,168 @@ static func determine_outcome(attacker_type, defender_type):
 			result = fairy_attacker(defender_type)
 	
 	return result
+
+# Determine the outcome of two pieces being selected
+static func determine_outcome_dual_type(attacker_type_1, attacker_type_2, defender_type_1, defender_type_2):
+	var result = 0
 	
+	# 1 to 1
+	match attacker_type_1:
+		"Normal":
+			result += normal_attacker(defender_type_1)
+		"Fire":
+			result += fire_attacker(defender_type_1)
+		"Water":
+			result += water_attacker(defender_type_1)
+		"Grass":
+			result += grass_attacker(defender_type_1)
+		"Electric":
+			result += electric_attacker(defender_type_1)
+		"Ice":
+			result += ice_attacker(defender_type_1)
+		"Fighting":
+			result += fighting_attacker(defender_type_1)
+		"Poison":
+			result += poison_attacker(defender_type_1)
+		"Ground":
+			result += ground_attacker(defender_type_1)
+		"Flying": 
+			result += flying_attacker(defender_type_1)
+		"Psychic":
+			result += psychic_attacker(defender_type_1)
+		"Bug":
+			result += bug_attacker(defender_type_1)
+		"Rock":
+			result += rock_attacker(defender_type_1)
+		"Ghost":
+			result += ghost_attacker(defender_type_1)
+		"Dragon":
+			result += dragon_attacker(defender_type_1)
+		"Dark":
+			result += dark_attacker(defender_type_1)
+		"Steel":
+			result += steel_attacker(defender_type_1)
+		"Fairy":
+			result += fairy_attacker(defender_type_1)
+	
+	# 1 to 2
+	match attacker_type_1:
+		"Normal":
+			result += normal_attacker(defender_type_2)
+		"Fire":
+			result += fire_attacker(defender_type_2)
+		"Water":
+			result += water_attacker(defender_type_2)
+		"Grass":
+			result += grass_attacker(defender_type_2)
+		"Electric":
+			result += electric_attacker(defender_type_2)
+		"Ice":
+			result += ice_attacker(defender_type_2)
+		"Fighting":
+			result += fighting_attacker(defender_type_2)
+		"Poison":
+			result += poison_attacker(defender_type_2)
+		"Ground":
+			result += ground_attacker(defender_type_2)
+		"Flying": 
+			result += flying_attacker(defender_type_2)
+		"Psychic":
+			result += psychic_attacker(defender_type_2)
+		"Bug":
+			result += bug_attacker(defender_type_2)
+		"Rock":
+			result += rock_attacker(defender_type_2)
+		"Ghost":
+			result += ghost_attacker(defender_type_2)
+		"Dragon":
+			result += dragon_attacker(defender_type_2)
+		"Dark":
+			result += dark_attacker(defender_type_2)
+		"Steel":
+			result += steel_attacker(defender_type_2)
+		"Fairy":
+			result += fairy_attacker(defender_type_2)
+	
+	# 2 to 1
+	match attacker_type_2:
+		"Normal":
+			result += normal_attacker(defender_type_1)
+		"Fire":
+			result += fire_attacker(defender_type_1)
+		"Water":
+			result += water_attacker(defender_type_1)
+		"Grass":
+			result += grass_attacker(defender_type_1)
+		"Electric":
+			result += electric_attacker(defender_type_1)
+		"Ice":
+			result += ice_attacker(defender_type_1)
+		"Fighting":
+			result += fighting_attacker(defender_type_1)
+		"Poison":
+			result += poison_attacker(defender_type_1)
+		"Ground":
+			result += ground_attacker(defender_type_1)
+		"Flying": 
+			result += flying_attacker(defender_type_1)
+		"Psychic":
+			result += psychic_attacker(defender_type_1)
+		"Bug":
+			result += bug_attacker(defender_type_1)
+		"Rock":
+			result += rock_attacker(defender_type_1)
+		"Ghost":
+			result += ghost_attacker(defender_type_1)
+		"Dragon":
+			result += dragon_attacker(defender_type_1)
+		"Dark":
+			result += dark_attacker(defender_type_1)
+		"Steel":
+			result += steel_attacker(defender_type_1)
+		"Fairy":
+			result += fairy_attacker(defender_type_1)
+			
+	# 2 to 2
+	match attacker_type_2:
+		"Normal":
+			result += normal_attacker(defender_type_2)
+		"Fire":
+			result += fire_attacker(defender_type_2)
+		"Water":
+			result += water_attacker(defender_type_2)
+		"Grass":
+			result += grass_attacker(defender_type_2)
+		"Electric":
+			result += electric_attacker(defender_type_2)
+		"Ice":
+			result += ice_attacker(defender_type_2)
+		"Fighting":
+			result += fighting_attacker(defender_type_2)
+		"Poison":
+			result += poison_attacker(defender_type_2)
+		"Ground":
+			result += ground_attacker(defender_type_2)
+		"Flying": 
+			result += flying_attacker(defender_type_2)
+		"Psychic":
+			result += psychic_attacker(defender_type_2)
+		"Bug":
+			result += bug_attacker(defender_type_2)
+		"Rock":
+			result += rock_attacker(defender_type_2)
+		"Ghost":
+			result += ghost_attacker(defender_type_2)
+		"Dragon":
+			result += dragon_attacker(defender_type_2)
+		"Dark":
+			result += dark_attacker(defender_type_2)
+		"Steel":
+			result += steel_attacker(defender_type_2)
+		"Fairy":
+			result += fairy_attacker(defender_type_2)
+	
+	return result
 
 # Helper function of determine_outcome for normal attacker case
 static func normal_attacker(defender):
