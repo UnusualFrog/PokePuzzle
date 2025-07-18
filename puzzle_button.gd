@@ -55,6 +55,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
+# Release mouse focus if clicking outside button
+func _input(event: InputEvent):
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
+		var evLocal = make_input_local(event)
+		if !Rect2(Vector2(0,0), size).has_point(evLocal.position):
+			release_focus()
+	
 # Determine the outcome of two pieces being selected
 static func determine_outcome(attacker_type, defender_type):
 	var result = -1
