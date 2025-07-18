@@ -244,7 +244,7 @@ func crit_hit_success():
 	var org_x = game_state["defender"].id_x
 	var org_y = game_state["defender"].id_y
 	
-	print(org_x, ", ", org_y)
+	#print(org_x, ", ", org_y)
 	recursive_crit_search(org_x, org_y)
 	
 	
@@ -263,26 +263,26 @@ func crit_hit_success():
 
 func recursive_crit_search(curr_x, curr_y):
 	var current_tile = game_state["puzzle_button_grid"][curr_x-1][curr_y-1]
-	print("curr: ", current_tile.type_1)
+	#print("curr: ", current_tile.type_1)
 	
 	while (Puzzle_Button.determine_outcome(game_state["attacker"].type_1, current_tile.type_1) == 2):
 		current_tile.hide()
 		game_state["puzzle_button_grid"][curr_x-1][curr_y-1].type_1 = "Null"
 		
 		if (curr_y-1 > 0):
-			print("up: ", game_state["puzzle_button_grid"][curr_x-1][curr_y-2].type_1)
+			#print("up: ", game_state["puzzle_button_grid"][curr_x-1][curr_y-2].type_1)
 			recursive_crit_search(curr_x, curr_y-1)
 		
 		if (curr_y-1 < game_state["side_length"].size()-1):
-			print("down: ", game_state["puzzle_button_grid"][curr_x-1][curr_y].type_1)
+			#print("down: ", game_state["puzzle_button_grid"][curr_x-1][curr_y].type_1)
 			recursive_crit_search(curr_x, curr_y+1)
 		
 		if (curr_x-1 > 0):
-			print("left: ", game_state["puzzle_button_grid"][curr_x-2][curr_y-1].type_1)
+			#print("left: ", game_state["puzzle_button_grid"][curr_x-2][curr_y-1].type_1)
 			recursive_crit_search(curr_x-1, curr_y)
 		
 		if (curr_x-1 < game_state["side_length"].size()-1):
-			print("right: ", game_state["puzzle_button_grid"][curr_x][curr_y-1].type_1)
+			#print("right: ", game_state["puzzle_button_grid"][curr_x][curr_y-1].type_1)
 			recursive_crit_search(curr_x+1, curr_y)
 		
 		break

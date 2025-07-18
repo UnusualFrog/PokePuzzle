@@ -1,13 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://g1b1mk1gp1bm"]
+[gd_scene load_steps=4 format=3 uid="uid://g1b1mk1gp1bm"]
 
 [ext_resource type="PackedScene" uid="uid://cocnfaycv1vn7" path="res://game_board.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bwl4pylg2u7l1" path="res://main_menu.tscn" id="2_0xm2m"]
+[ext_resource type="AudioStream" uid="uid://n5vv5xjcws5c" path="res://sound/music/1-45 - National Park.wav" id="3_h2yge"]
 
 [node name="Node" type="Node"]
 
 [node name="GameBoard" parent="." instance=ExtResource("1_ig7tw")]
 
 [node name="MainMenu" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_h2yge")
+autoplay = true
 
 [connection signal="main_menu_return" from="GameBoard" to="MainMenu" method="_on_game_board_main_menu_return"]
 [connection signal="start_game_pressed" from="MainMenu" to="GameBoard" method="_on_main_menu_start_game_pressed"]

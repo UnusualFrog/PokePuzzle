@@ -192,7 +192,7 @@ static func fighting_attacker(defender):
 static func poison_attacker(defender):
 	match defender:
 		# Resist
-		"Poison", "Ground", "Rock", "Ghost", "Fairy", "Steel":
+		"Poison", "Ground", "Rock", "Ghost", "Steel":
 			return 0
 		# Super
 		"Grass", "Fairy":
