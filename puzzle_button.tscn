@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://ckyym688urxl3" path="res://puzzle_button.gd" id="1_31yxf"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_31yxf"]
-load_path = "res://.godot/imported/fire.png-4b1bba03b0083d88345d5bf278afc689.ctex"
 
 [node name="Button" type="Button"]
 z_index = -1
