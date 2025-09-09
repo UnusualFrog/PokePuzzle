@@ -13,6 +13,7 @@ func _ready() -> void:
 	var button_type = randi() % 18 + 1
 	#print(button_type)
 	
+	# Generate type 1
 	match button_type:
 		1:
 			type_1 = "Normal"
@@ -50,6 +51,46 @@ func _ready() -> void:
 			type_1 = "Steel"
 		18:
 			type_1 = "Fairy"
+	
+	# Generate type 2
+	button_type = randi() % 18 + 1
+	match button_type:
+		1:
+			type_2 = "Normal"
+		2:
+			type_2 = "Fire"
+		3:
+			type_2 = "Water"
+		4:
+			type_2 = "Grass"
+		5: 
+			type_2 = "Electric"
+		6:
+			type_2 = "Ice"
+		7:
+			type_2 = "Fighting"
+		8:
+			type_2 = "Poison"
+		9:
+			type_2 = "Ground"
+		10:
+			type_2 = "Flying"
+		11:
+			type_2 = "Psychic"
+		12:
+			type_2 = "Bug"
+		13:
+			type_2 = "Rock"
+		14:
+			type_2 = "Ghost"
+		15:
+			type_2 = "Dragon"
+		16:
+			type_2 = "Dark"
+		17: 
+			type_2 = "Steel"
+		18:
+			type_2 = "Fairy"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
