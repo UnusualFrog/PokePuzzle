@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1htdifmitwlw"]
+
+[ext_resource type="Script" uid="uid://if3bganxfx1f" path="res://difficulty_menu.gd" id="1_cm51m"]
+[ext_resource type="Texture2D" uid="uid://d27mrq01vno45" path="res://art/UI/background_score_board.png" id="1_v2r4t"]
+[ext_resource type="Texture2D" uid="uid://bnkbdii3yqs65" path="res://art/UI/easy_logo.png" id="2_cm51m"]
+[ext_resource type="Texture2D" uid="uid://dxlp5onk0q2mn" path="res://art/UI/hard_logo.png" id="3_70yp6"]
+[ext_resource type="Texture2D" uid="uid://c3brchom4qa8f" path="res://art/UI/medium_logo.png" id="4_3pdee"]
+[ext_resource type="Texture2D" uid="uid://bd8x2t06tapup" path="res://art/UI/select_difficulty_logo.png" id="5_4xjo6"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o47sb"]
+
+[node name="DifficultyMenu" type="CanvasLayer"]
+script = ExtResource("1_cm51m")
+
+[node name="DifficultyMenuContainer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Sprite2D" parent="DifficultyMenuContainer"]
+z_index = -1
+material = SubResource("CanvasItemMaterial_o47sb")
+position = Vector2(544, 344)
+scale = Vector2(1.55961, 1.57724)
+texture = ExtResource("1_v2r4t")
+
+[node name="EasyButton" type="Button" parent="DifficultyMenuContainer"]
+offset_left = 320.0
+offset_top = 360.0
+offset_right = 431.0
+offset_bottom = 432.0
+icon = ExtResource("2_cm51m")
+
+[node name="MediumButton" type="Button" parent="DifficultyMenuContainer"]
+offset_left = 472.0
+offset_top = 360.0
+offset_right = 626.0
+offset_bottom = 432.0
+icon = ExtResource("4_3pdee")
+
+[node name="HardButton" type="Button" parent="DifficultyMenuContainer"]
+offset_left = 656.0
+offset_top = 360.0
+offset_right = 767.0
+offset_bottom = 432.0
+icon = ExtResource("3_70yp6")
+
+[node name="DifficultyHeader" type="Sprite2D" parent="DifficultyMenuContainer"]
+position = Vector2(544, 280)
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("5_4xjo6")
+
+[connection signal="pressed" from="DifficultyMenuContainer/EasyButton" to="." method="_on_easy_button_pressed"]
+[connection signal="pressed" from="DifficultyMenuContainer/EasyButton" to="DifficultyMenuContainer" method="_on_easy_button_pressed"]
+[connection signal="pressed" from="DifficultyMenuContainer/MediumButton" to="." method="_on_medium_button_pressed"]
+[connection signal="pressed" from="DifficultyMenuContainer/HardButton" to="." method="_on_hard_button_pressed"]

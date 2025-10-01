@@ -31,7 +31,8 @@ var game_state = {
 	"x_off": 200,
 	"y_off": -25,
 	"button_size": 100,
-	"side_length": range(1,6)
+	"side_length": range(1,6),
+	"difficulty": "easy"
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -77,7 +78,10 @@ func _on_button_pressed(emitter):
 
 # Runs when the 'Play' button has been pressed on the main menu
 # Display game UI
-func _on_main_menu_start_game_pressed() -> void:
+func _on_main_menu_start_game_pressed(difficulty) -> void:
+	print("Game started on " + difficulty)
+	game_state["difficulty"] = difficulty
+	
 	generate_board()
 	var timer_text = get_node("UICanvasLayer/TimerText")
 	var score_text = get_node("UICanvasLayer/ScoreText")
