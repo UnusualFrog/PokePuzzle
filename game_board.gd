@@ -220,7 +220,8 @@ var game_state = {
 	"y_off": -25,
 	"button_size": 100,
 	"side_length": range(1,6),
-	"difficulty": "easy"
+	"difficulty": "easy",
+	"super_effective_threshold": 2
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -232,6 +233,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if (game_state["game_is_active"]):
 		increment_timer(delta)
+		
+		
 
 # Called when a puzzle_button element is clicked
 func _on_button_pressed(emitter):
@@ -244,14 +247,19 @@ func _on_button_pressed(emitter):
 		#print(game_state["attacker"].type_1, " -> ", game_state["defender"].type_1)
 		if !(game_state["attacker"].id_x == game_state["defender"].id_x && game_state["attacker"].id_y == game_state["defender"].id_y):
 			# If attacker successfully hits defender, remove both and check for end of game
-			var attack_result = Puzzle_Button.determine_outcome(game_state["attacker"].type_1, game_state["defender"].type_1)
+			var attack_result 
+			if game_state["difficulty"] == "easy":
+				attack_result = Puzzle_Button.determine_outcome(game_state["attacker"].type_1, game_state["defender"].type_1)
+			else:
+				attack_result = Puzzle_Button.determine_outcome_dual_type(game_state["attacker"].type_1, game_state["defender"].type_1, game_state["defender"].type_2)
+
 			if (attack_result == 1):
 				hit_success()
 				
 				# If game over, show win UI, stop timer and hide game UI
 				if (check_game_state()):
 					display_win()
-			elif (attack_result == 2):
+			elif (attack_result >= 2):
 				crit_hit_success()
 				
 				# If game over, show win UI, stop timer and hide game UI
@@ -269,6 +277,9 @@ func _on_button_pressed(emitter):
 func _on_main_menu_start_game_pressed(difficulty) -> void:
 	print("Game started on " + difficulty)
 	game_state["difficulty"] = difficulty
+	# Set super effective threshold based on difficulty
+	if game_state["difficulty"] != "easy":
+		game_state["super_effective_threshold"] = 3
 	
 	generate_board()
 	var timer_text = get_node("UICanvasLayer/TimerText")
@@ -1153,14 +1164,15 @@ func crit_hit_success():
 	#print(org_x, ", ", org_y)
 	recursive_crit_search(org_x, org_y)
 	
-	
 	# Remove selected buttons
 	game_state["attacker"].hide()
 	game_state["defender"].hide()
 	
 	# Remove buttons from grid
 	game_state["puzzle_button_grid"][game_state["attacker"].id_x-1][game_state["attacker"].id_y-1].type_1 = "Null"
+	game_state["puzzle_button_grid"][game_state["attacker"].id_x-1][game_state["attacker"].id_y-1].type_2 = "Null"
 	game_state["puzzle_button_grid"][game_state["defender"].id_x-1][game_state["defender"].id_y-1].type_1 = "Null"
+	game_state["puzzle_button_grid"][game_state["defender"].id_x-1][game_state["defender"].id_y-1].type_2 = "Null"
 	
 	# Increment score
 	var score_value = get_node("UICanvasLayer/ScoreValue")
@@ -1168,12 +1180,21 @@ func crit_hit_success():
 	score_value.text = str(game_state["game_score"])
 
 func recursive_crit_search(curr_x, curr_y):
+	# Get current defender tile
 	var current_tile = game_state["puzzle_button_grid"][curr_x-1][curr_y-1]
-	#print("curr: ", current_tile.type_1)
+	print("curr: ", current_tile.type_1)
+	var type_outcome
 	
-	while (Puzzle_Button.determine_outcome(game_state["attacker"].type_1, current_tile.type_1) == 2):
+	if (game_state["difficulty"] == "easy"):
+		type_outcome = Puzzle_Button.determine_outcome(game_state["attacker"].type_1, current_tile.type_1)
+	else:
+		type_outcome = Puzzle_Button.determine_outcome_dual_type(game_state["attacker"].type_1, current_tile.type_1, current_tile.type_2)
+	
+	# While super effective
+	while (type_outcome >= game_state["super_effective_threshold"]):
 		current_tile.hide()
 		game_state["puzzle_button_grid"][curr_x-1][curr_y-1].type_1 = "Null"
+		game_state["puzzle_button_grid"][curr_x-1][curr_y-1].type_2 = "Null"
 		
 		if (curr_y-1 > 0):
 			#print("up: ", game_state["puzzle_button_grid"][curr_x-1][curr_y-2].type_1)
