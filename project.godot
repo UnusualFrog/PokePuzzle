@@ -14,3 +14,7 @@ config/name="PokePuzzle"
 run/main_scene="uid://g1b1mk1gp1bm"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"

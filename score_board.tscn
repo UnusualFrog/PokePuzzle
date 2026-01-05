@@ -15,26 +15,21 @@ texture = ExtResource("1_lrnbq")
 
 [node name="AttackBonusLabel" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.181
-anchor_top = 0.23
-anchor_right = 0.181
-anchor_bottom = 0.23
-offset_left = 192.262
-offset_top = 134.96
-offset_right = 434.262
-offset_bottom = 183.96
+offset_left = 400.0
+offset_top = 304.0
+offset_right = 642.0
+offset_bottom = 353.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 text = "Attack Bonus: "
 label_settings = ExtResource("2_dfpnx")
-horizontal_alignment = 1
 
 [node name="AttackBonusValue" type="Label" parent="."]
-offset_left = 672.774
-offset_top = 284.0
-offset_right = 732.774
-offset_bottom = 333.0
+offset_left = 672.0
+offset_top = 304.0
+offset_right = 732.0
+offset_bottom = 353.0
 size_flags_horizontal = 0
 text = "000"
 label_settings = ExtResource("2_dfpnx")
